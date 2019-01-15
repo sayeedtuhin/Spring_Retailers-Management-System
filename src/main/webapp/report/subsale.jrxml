@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="621cee03-60d9-4ebc-9bd7-f2ecda76af42">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="sid" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["E:\\tuhin.Spring\\retailers27\\retailers26\\retailers1\\retailersManagement\\src\\main\\webapp\\report\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT sale.saleid,
+       customerinfo.customername,
+       sale.admin,
+       sale.billtotal,
+       sale.saledate,
+       sale.status
+FROM retailers.customerinfo customerinfo
+     INNER JOIN retailers.sale sale
+        ON (customerinfo.customerid = sale.customerid)
+where sale.saleid=$P{sid}]]>
+	</queryString>
+	<field name="saleid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="customername" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="admin" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="billtotal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saledate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" mode="Opaque" x="0" y="0" width="802" height="67" forecolor="#003333" backcolor="#CCCCFF" uuid="454860d4-aeb5-4694-a094-37c704d43c9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Brothers Store]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" mode="Opaque" x="0" y="67" width="800" height="37" forecolor="#003333" backcolor="#CCCCFF" uuid="5699d56e-4af4-4fa2-b5dd-5dd366914333"/>
+				<textElement textAlignment="Center">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Sale-Details]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="5" width="802" height="20" backcolor="#006666" uuid="d09ba434-73e0-4d97-8075-f30a6aece69a"/>
+				<staticText>
+					<reportElement style="Column header" x="10" y="0" width="97" height="15" uuid="42501ea1-c5bb-4ad3-945d-478f570d7cb5"/>
+					<text><![CDATA[saleid]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="156" y="0" width="117" height="15" uuid="8ff6a251-335c-4c07-83cb-33c5a2d01b0a"/>
+					<text><![CDATA[customername]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="320" y="0" width="94" height="15" uuid="96edd430-369a-4d1b-b965-6436fc920da6"/>
+					<text><![CDATA[admin]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="437" y="0" width="98" height="15" uuid="6d1bdfc6-9f0d-4083-8f39-e8a7eb3264f9"/>
+					<text><![CDATA[Grand-Total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="554" y="0" width="101" height="15" uuid="0491be8e-54a5-48b9-9e27-1d9fb24ddda0"/>
+					<text><![CDATA[saledate]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="682" y="0" width="107" height="15" uuid="f055137a-bc11-4c44-8d23-be7e65bb7f71"/>
+					<text><![CDATA[status]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="159" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="4783b177-a9ca-42a0-9925-6126a1c4f6e7"/>
+				<textField>
+					<reportElement style="Detail" x="223" y="0" width="83" height="15" uuid="5787f8be-5f55-4692-a863-3206dd380da0"/>
+					<textFieldExpression><![CDATA[$F{admin}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="585" y="0" width="107" height="15" uuid="257b0443-b750-4ded-8a5a-50b72341c696"/>
+					<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="375b9999-50b3-4fc1-bf86-22c9019ab7e6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="10" y="0" width="97" height="15" uuid="f87b5787-3089-4db0-b2c2-db562a3211ea"/>
+				<textFieldExpression><![CDATA[$F{saleid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="554" y="0" width="101" height="15" uuid="f9763384-314c-4731-98fc-d8adc4857f91"/>
+				<textFieldExpression><![CDATA[$F{saledate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="156" y="0" width="117" height="15" uuid="d266ab5f-f994-43cd-ade5-eccf445b6675"/>
+				<textFieldExpression><![CDATA[$F{customername}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="437" y="0" width="87" height="15" uuid="4a30ba93-dc28-4ecc-b30a-e727a5e3e029"/>
+				<textFieldExpression><![CDATA[$F{billtotal}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="10" y="30" width="200" height="100" uuid="899110c1-b15d-4911-a99d-51dd6046c566"/>
+				<subreportParameter name="sid">
+					<subreportParameterExpression><![CDATA[$P{sid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subsale_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="9511a3c1-f3ab-46e9-aab4-b3f2ff62ea15"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
